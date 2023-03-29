@@ -1,7 +1,7 @@
 package com.amryadam.sbms.aop;
 
 
-import com.amryadam.sbms.model.customers.Customer;
+import com.amryadam.sbms.entities.customers.Customer;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;

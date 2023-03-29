@@ -1,6 +1,5 @@
-package com.amryadam.sbms.model.locations;
+package com.amryadam.sbms.entities.locations;
 
-import com.amryadam.sbms.model.common.BaseAuditable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,8 +7,8 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "CITY")
-public class City  extends BaseAuditable {
+@Table(name = "City")
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

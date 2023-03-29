@@ -1,6 +1,6 @@
 package com.amryadam.sbms.repository.operation;
 
-import com.amryadam.sbms.model.operations.Operation;
+import com.amryadam.sbms.entities.operations.Operation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

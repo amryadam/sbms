@@ -1,4 +1,4 @@
-package com.amryadam.sbms.model.common;
+package com.amryadam.sbms.entities.common;
 
 import io.azam.ulidj.ULID;
 import org.hibernate.HibernateException;

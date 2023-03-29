@@ -62,36 +62,47 @@
             <groupId>org.springframework.ldap</groupId>
             <artifactId>spring-ldap-core</artifactId>
         </dependency>
-
-        <!--LDAP dependency-->
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-ldap</artifactId>
+            <artifactId>spring-security-oauth2-authorization-server</artifactId>
+            <version>1.0.1</version>
         </dependency>
+
         <dependency>
-            <groupId>com.unboundid</groupId>
-            <artifactId>unboundid-ldapsdk</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
+
+        <!--LDAP dependency-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-ldap</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.unboundid</groupId>-->
+<!--            <artifactId>unboundid-ldapsdk</artifactId>-->
+<!--        </dependency>-->
 
         <!--        JWT -->
 
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>0.11.5</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
-            <version>0.11.5</version>
-            <scope>runtime</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt-api</artifactId>-->
+<!--            <version>0.11.5</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt-impl</artifactId>-->
+<!--            <version>0.11.5</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt-jackson</artifactId> &lt;!&ndash; or jjwt-gson if Gson is preferred &ndash;&gt;-->
+<!--            <version>0.11.5</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+<!--        -->
         <!-- Uncomment this next dependency if you are using JDK 10 or earlier and you also want to use
              RSASSA-PSS (PS256, PS384, PS512) algorithms.  JDK 11 or later does not require it for those algorithms:
         <dependency>
@@ -145,6 +156,8 @@
             <version>3.12.0</version>
         </dependency>
 
+
+
     </dependencies>
 
     <build>
@@ -166,9 +179,9 @@
     <!--	Add third party repo-->
     <repositories>
         <repository>
-            <id>atlassian</id>
-            <name>Atlassian Repo</name>
-            <url>https://packages.atlassian.com/maven-public/</url>
+            <id>SpringMilestones</id>
+            <name>Spring Milestones Repository</name>
+            <url>https://repo.spring.io/milestone//</url>
         </repository>
     </repositories>
 </project>

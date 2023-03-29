@@ -1,32 +1,78 @@
 package com.amryadam.sbms.controller;
 
-import com.amryadam.sbms.model.customers.Customer;
+import com.amryadam.sbms.entities.customers.Customer;
 import com.amryadam.sbms.services.customers.CustomerService;
-import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CustomerController {
     @Autowired
-    private CustomerService<Customer> customerService;
+    private CustomerService customerService;
 
-
-    //@PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/customer")
-    public String addCustomer(){
-        var customer = CreateCustomer();
-        customerService.add(customer);
-        return customer.toString();
+    @PostMapping(value = "/customers")
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        var pair = customerService.save(customer);
+        if (pair.getLeft() != null) {
+            return new ResponseEntity<>(pair.getLeft(), HttpStatus.CREATED);
+        } else {
+            //TODO return error message
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public Customer CreateCustomer(){
-        Faker faker = new Faker();
-        var _customer = new Customer();
-        _customer.setName(faker.name().fullName());
-        //System.out.println("call from create customer " + _customer);
-        return  _customer;
+    @PutMapping("/customers")
+    public ResponseEntity<Customer> updateCreate(@RequestBody Customer customer) {
+
+        var pair = customerService.update(customer);
+        if (pair.getLeft() != null) {
+            return new ResponseEntity<>(pair.getLeft(), HttpStatus.CREATED);
+        } else {
+            if (pair.getRight() == null) {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            } else {
+                //TODO return error message
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
     }
+
+    @GetMapping("/customers")
+    public ResponseEntity<List<Customer>> getAll() {
+        var pair = customerService.getAll();
+
+        if (!pair.getLeft().isEmpty()) {
+            return new ResponseEntity<>(pair.getLeft(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+    }
+
+
+    @DeleteMapping(value = "/customers/{id}")
+    public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") String id) {
+        var pair = customerService.delete(id);
+        if (pair.getLeft() != null) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @PostMapping(value = "/customers/deleteSelected")
+    public ResponseEntity<HttpStatus> deleteCustomers(@RequestBody() List<String> ids) {
+        var pair = customerService.delete(ids);
+        if (pair.getLeft() == true) {
+            return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

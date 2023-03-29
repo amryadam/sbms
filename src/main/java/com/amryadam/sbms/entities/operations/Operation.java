@@ -1,13 +1,13 @@
-package com.amryadam.sbms.model.operations;
+package com.amryadam.sbms.entities.operations;
 
 
-import com.amryadam.sbms.model.customers.Customer;
+import com.amryadam.sbms.entities.customers.Customer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity @Getter @Setter
-@Table(name = "OPERATION")
+@Table(name = "Operation")
 public class Operation {
 
     @Id

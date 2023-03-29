@@ -1,6 +1,6 @@
 package com.amryadam.sbms.services.locations;
 
-import com.amryadam.sbms.model.locations.City;
+import com.amryadam.sbms.entities.locations.City;
 
 public interface CityService {
     City save(City city);

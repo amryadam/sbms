@@ -1,6 +1,6 @@
 package com.amryadam.sbms.services.locations;
 
-import com.amryadam.sbms.model.locations.City;
+import com.amryadam.sbms.entities.locations.City;
 import com.amryadam.sbms.repository.location.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

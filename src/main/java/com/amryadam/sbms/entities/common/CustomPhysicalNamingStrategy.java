@@ -1,4 +1,4 @@
-package com.amryadam.sbms.model.common;
+package com.amryadam.sbms.entities.common;
 
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
