@@ -1,25 +1,27 @@
 package com.amryadam.sbms.services.customers;
 
-import com.amryadam.sbms.entities.customers.Customer;
+import com.amryadam.sbms.models.dtos.customer.CustomerDto;
+import com.amryadam.sbms.models.entities.customers.Customer;
 import com.amryadam.sbms.repository.customer.CustomerRepository;
+import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
 
-    @Autowired
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+
 
     @Override
     public ImmutablePair<Customer, String> save(Customer customer) {
         try {
-            var _customers = customerRepository.save(customer);
+            var _customers = customerRepository.saveAndFlush(customer);
             return ImmutablePair.of(_customers, "");
         } catch (IllegalArgumentException ex) {
             return ImmutablePair.of(null, ex.getMessage());
@@ -67,6 +69,20 @@ public class CustomerServiceImpl implements CustomerService {
         } catch (IllegalArgumentException ex) {
             return ImmutablePair.of(null, ex.getMessage());
 
+        }
+    }
+
+    @Override
+    public ImmutablePair<List<CustomerDto>, String> getAllDto() {
+
+        try {
+            var _customers = customerRepository.findAllDto();
+            if (!_customers.isEmpty())
+                return ImmutablePair.of(_customers, "");
+            else
+                return ImmutablePair.of(null, "No record found");
+        } catch (IllegalArgumentException ex) {
+            return ImmutablePair.of(null, ex.getMessage());
         }
     }
 

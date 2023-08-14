@@ -45,8 +45,7 @@ public class SecurityConfig {
                 .oauth2ResourceServer(
                        r -> r.jwt().jwkSetUri(jwkUri)
                 )
-                .authorizeHttpRequests()
-                .anyRequest().authenticated()  // authorization
+                .authorizeHttpRequests().anyRequest().permitAll()
                 .and().build();
     }
 
