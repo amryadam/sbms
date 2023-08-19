@@ -13,6 +13,7 @@ import com.amryadam.sbms.services.operation.ProductService;
 import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -25,6 +26,7 @@ import java.util.stream.Stream;
 
 
 @AllArgsConstructor
+//@Component
 public class SampleDataLoader implements CommandLineRunner {
 
 

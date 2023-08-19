@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/customers")
 public class CustomerController {
     private CustomerService customerService;
 
@@ -28,7 +28,7 @@ public class CustomerController {
         }
     }
 
-    @PutMapping("/customers")
+    @PutMapping()
     public ResponseEntity<Customer> updateCreate( @Valid  @RequestBody Customer customer) {
 
         var pair = customerService.update(customer);
@@ -44,7 +44,7 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/customers")
+    @GetMapping()
     public ResponseEntity<List<Customer>> getAll() {
         var pair = customerService.getAll();
 

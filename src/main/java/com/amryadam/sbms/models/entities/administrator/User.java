@@ -4,9 +4,10 @@ package com.amryadam.sbms.models.entities.administrator;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-@Entity @Getter @Setter
-@Table(name = "User")
+@Getter
+@Setter
+@Entity
+@Table(name = "[User]") // place table name inside square bracket for reserved keywords
 public class User {
 
     @Id
